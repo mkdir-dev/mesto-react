@@ -1,9 +1,7 @@
-
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
+    
+    <div className="page">
 
       {/* == header == */}
       <header className="header">
