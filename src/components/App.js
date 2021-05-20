@@ -1,49 +1,13 @@
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
+
 function App() {
   return (
-    
     <div className="page">
-
-      {/* == header == */}
-      <header className="header">
-        {/* eslint-disable-next-line */}
-        <a className="header__logo" href="#" target="_self" rel="noopener"></a>
-      </header>
-
-      {/* == content == */}
-      <main className="content page__section">
-
-        {/* == user == */}
-        <section className="user">
-          <div className="user__wrapper">
-            <button className="user__edit-avatar" type="button" aria-label="Редактировать">
-              <div className="user__avatar"></div>
-            </button>
-            <div className="user__info">
-              <div className="user__text">
-                <h1 className="user__name">Жак-Ив Кусто</h1>
-                <button className="button user__edit" type="button" aria-label="Редактировать"></button>
-              </div>
-              <p className="user__vocation">Исследователь океана</p>
-            </div>
-          </div>
-          <button className="button user__add" type="button" aria-label="Добавить"></button>
-        </section>
-
-        {/* == places == */}
-        <section className="places">
-          <ul className="places__section">
-          </ul>
-        </section>
-
-      </main>
-
-      {/* == footer == */}
-      <footer className="footer">
-        {/* eslint-disable-next-line */}
-        <a href="https://github.com/Joeshua91" className="footer__copyright" target="_blank" rel="noopener">
-          &copy; 2021. Михаил Корюков
-      </a>
-      </footer>
+      <Header />
+      <Main />
+      <Footer />
 
       {/* == popup Avatar == */}
       <div className="popup popup_type_avatar">
