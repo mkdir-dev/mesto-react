@@ -1,24 +1,30 @@
-import Header from './Header';
-import Main from './Main';
-import Footer from './Footer';
-import PopupAvatar from './PopupAvatar';
-import PopupEdit from './PopupEdit';
-import PopupAdd from './PopupAdd';
-import PopupConfirm from './PopupConfirm';
-import PopupView from './PopupView';
-import Card from './Card';
+import React from 'react'
+
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
+import PopupAvatar from './PopupAvatar'
+import PopupEdit from './PopupEdit'
+import PopupAdd from './PopupAdd'
+import PopupConfirm from './PopupConfirm'
+import PopupView from './PopupView'
+import Card from './Card'
 
 function App() {
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
+
   function handleEditAvatarClick() {
-    document.querySelector('.popup_type_avatar').classList.add('popup_opened')
+    setEditAvatarPopupOpen(true)
   }
 
   function handleEditProfileClick() {
-    document.querySelector('.popup_type_edit').classList.add('popup_opened')
+    setEditProfilePopupOpen(true)
   }
 
   function handleAddPlaceClick() {
-    document.querySelector('.popup_type_add').classList.add('popup_opened')
+    setAddPlacePopupOpen(true)
   }
 
   return (
@@ -31,15 +37,21 @@ function App() {
       />
       <Footer />
 
-      <PopupAvatar />
-      <PopupEdit />
-      <PopupAdd />
+      <PopupAvatar
+        isOpen={isEditAvatarPopupOpen}
+      />
+      <PopupEdit
+        isOpen={isEditProfilePopupOpen}
+      />
+      <PopupAdd
+        isOpen={isAddPlacePopupOpen}
+      />
       <PopupConfirm />
       <PopupView />
 
       <Card />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

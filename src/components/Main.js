@@ -1,6 +1,4 @@
 function Main(props) {
-  const { onPopupAvatar, onPopupEdit, onPopupAdd } = props;
-
   return (
     <main className="content page__section">
       <section className="user">
@@ -9,7 +7,7 @@ function Main(props) {
             className="user__edit-avatar"
             type="button"
             aria-label="Редактировать"
-            onClick={onPopupAvatar}>
+            onClick={props.onPopupAvatar}>
             <div className="user__avatar"></div>
           </button>
           <div className="user__info">
@@ -19,7 +17,7 @@ function Main(props) {
                 className="button user__edit"
                 type="button"
                 aria-label="Редактировать"
-                onClick={onPopupEdit}>
+                onClick={props.onPopupEdit}>
               </button>
             </div>
             <p className="user__vocation">Исследователь океана</p>
@@ -29,7 +27,7 @@ function Main(props) {
           className="button user__add"
           type="button"
           aria-label="Добавить"
-          onClick={onPopupAdd}
+          onClick={props.onPopupAdd}
         >
         </button>
       </section>

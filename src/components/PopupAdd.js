@@ -1,11 +1,12 @@
 import PopupWithForm from './PopupWithForm'
 
-function PopupAdd() {
+function PopupAdd(props) {
   return (
     <PopupWithForm
       title='Новое место'
       name='add'
       buttonText='Создать'
+      isOpen={props.isOpen}
     >
       <input className="popup__input popup__input_type_title-place" id="title-place" name="title-place" type="text"
         placeholder="Название" minlength="2" maxlength="30" required />
