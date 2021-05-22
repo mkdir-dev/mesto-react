@@ -27,6 +27,12 @@ function App() {
     setAddPlacePopupOpen(true)
   }
 
+  function closeAllPopups() {
+    setEditAvatarPopupOpen(false)
+    setEditProfilePopupOpen(false)
+    setAddPlacePopupOpen(false)
+  }
+
   return (
     <div className="page">
       <Header />
@@ -39,12 +45,15 @@ function App() {
 
       <PopupAvatar
         isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
       />
       <PopupEdit
         isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
       />
       <PopupAdd
         isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
       />
       <PopupConfirm />
       <PopupView />

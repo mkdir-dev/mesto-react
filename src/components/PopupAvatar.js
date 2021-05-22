@@ -7,6 +7,7 @@ function PopupAvatar(props) {
       name='avatar'
       buttonText='Сохранить'
       isOpen={props.isOpen}
+      onClose={props.onClose}
     >
       <input className="popup__input popup__input_type_avatar" id="avatar" name="avatar" type="url"
         placeholder="Ссылка на картинку" minlength="2" required />

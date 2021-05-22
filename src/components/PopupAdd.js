@@ -7,6 +7,7 @@ function PopupAdd(props) {
       name='add'
       buttonText='Создать'
       isOpen={props.isOpen}
+      onClose={props.onClose}
     >
       <input className="popup__input popup__input_type_title-place" id="title-place" name="title-place" type="text"
         placeholder="Название" minlength="2" maxlength="30" required />

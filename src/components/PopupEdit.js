@@ -7,6 +7,7 @@ function PopupEdit(props) {
       name='edit'
       buttonText='Сохранить'
       isOpen={props.isOpen}
+      onClose={props.onClose}
     >
       <input className="popup__input popup__input_type_name" id="name" name="name" type="text" placeholder="Имя"
         minlength="2" maxlength="40" required />
