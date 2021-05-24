@@ -1,4 +1,6 @@
 import React from 'react'
+import api from '../utils/api'
+import { CurrentUserContext } from '../сontext/CurrentUserContext'
 
 import Header from './Header'
 import Main from './Main'
@@ -14,6 +16,22 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
+  const [currentUser, setCurrentUser] = React.useState('')
+
+  React.useEffect(() => {
+    api.getUserInfo()
+      .then(data => {
+        setCurrentUser({
+          name: data.name,
+          about: data.about,
+          _id: data._id,
+          avatar: data.avatar
+        })
+      })
+      .catch(err => {
+        console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
+      })
+  }, [])
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true)
@@ -34,32 +52,34 @@ function App() {
   }
 
   return (
-    <div className="page">
-      <Header />
-      <Main
-        onPopupAvatar={handleEditAvatarClick}
-        onPopupEdit={handleEditProfileClick}
-        onPopupAdd={handleAddPlaceClick}
-      />
-      <Footer />
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <Header />
+        <Main
+          onPopupAvatar={handleEditAvatarClick}
+          onPopupEdit={handleEditProfileClick}
+          onPopupAdd={handleAddPlaceClick}
+        />
+        <Footer />
 
-      <PopupAvatar
-        isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-      />
-      <PopupEdit
-        isOpen={isEditProfilePopupOpen}
-        onClose={closeAllPopups}
-      />
-      <PopupAdd
-        isOpen={isAddPlacePopupOpen}
-        onClose={closeAllPopups}
-      />
-      <PopupConfirm />
-      <PopupView />
+        <PopupAvatar
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+        />
+        <PopupEdit
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+        />
+        <PopupAdd
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+        />
+        <PopupConfirm />
+        <PopupView />
 
-      <Card />
-    </div>
+        <Card />
+      </div>
+    </CurrentUserContext.Provider>
   )
 }
 
