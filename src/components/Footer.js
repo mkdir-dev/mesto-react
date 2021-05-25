@@ -1,8 +1,7 @@
 function Footer() {
   return (
     <footer className="footer">
-      {/* eslint-disable-next-line */}
-      <a href="https://github.com/Joeshua91" className="footer__copyright" target="_blank" rel="noopener">
+      <a href="https://github.com/mkdir-dev" className="footer__copyright" target="_blank" rel="noreferrer">
         &copy; 2021. Михаил Корюков
       </a>
     </footer>

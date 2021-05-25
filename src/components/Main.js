@@ -1,9 +1,34 @@
 import React from 'react'
-import { CurrentUserContext } from '../сontext/CurrentUserContext'
+import api from '../utils/api'
 import Card from './Card'
 
 function Main(props) {
-  const currentUser = React.useContext(CurrentUserContext)
+  const [userName, setUserName] = React.useState('')
+  const [userDescription, setUserDescription] = React.useState('')
+  const [userAvatar, setUserAvatar] = React.useState('')
+  const [cards, setCards] = React.useState([])
+
+  React.useEffect(() => {
+    api.getUserInfo()
+      .then(data => {
+        setUserName(data.name)
+        setUserDescription(data.about)
+        setUserAvatar(data.avatar)
+      })
+      .catch(err => {
+        console.log(`Данные пользователя с сервера не получены. Ошибка: ${err}.`)
+      })
+  }, [])
+
+  React.useEffect(() => {
+    api.getInitialCards()
+      .then(cards => {
+        setCards(cards)
+      })
+      .catch(err => {
+        console.log(`Данные карточек с сервера не получены. Ошибка: ${err}.`)
+      })
+  })
 
   return (
     <main className="content page__section">
@@ -14,11 +39,11 @@ function Main(props) {
             type="button"
             aria-label="Редактировать"
             onClick={props.onPopupAvatar}>
-            <div className="user__avatar" style={{ backgroundImage: `url(${currentUser.avatar})` }}></div>
+            <div className="user__avatar" style={{ backgroundImage: `url(${userAvatar})` }}></div>
           </button>
           <div className="user__info">
             <div className="user__text">
-              <h1 className="user__name">{currentUser.name}</h1>
+              <h1 className="user__name">{userName}</h1>
               <button
                 className="button user__edit"
                 type="button"
@@ -26,7 +51,7 @@ function Main(props) {
                 onClick={props.onPopupEdit}>
               </button>
             </div>
-            <p className="user__vocation">{currentUser.about}</p>
+            <p className="user__vocation">{userDescription}</p>
           </div>
         </div>
         <button
@@ -40,7 +65,7 @@ function Main(props) {
 
       <section className="places">
         <ul className="places__section">
-          {props.cards.map((card) => (
+          {cards.map((card) => (
             <Card
               key={card._id}
               link={card.link}

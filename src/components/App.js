@@ -1,6 +1,4 @@
 import React from 'react'
-import api from '../utils/api'
-import { CurrentUserContext } from '../сontext/CurrentUserContext'
 
 import Header from './Header'
 import Main from './Main'
@@ -15,33 +13,6 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
-  const [currentUser, setCurrentUser] = React.useState('')
-  const [cards, setCards] = React.useState([])
-
-  React.useEffect(() => {
-    api.getUserInfo()
-      .then(data => {
-        setCurrentUser({
-          name: data.name,
-          about: data.about,
-          _id: data._id,
-          avatar: data.avatar
-        })
-      })
-      .catch(err => {
-        console.log(`Данные пользователья с сервера не получены. Ошибка: ${err}.`)
-      })
-  }, [])
-
-  React.useEffect(() => {
-    api.getInitialCards()
-      .then(cards => {
-        setCards(cards)
-      })
-      .catch(err => {
-        console.log(`Данные карточек с сервера не получены. Ошибка: ${err}.`)
-      })
-  })
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true)
@@ -62,14 +33,12 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
         <Main
           onPopupAvatar={handleEditAvatarClick}
           onPopupEdit={handleEditProfileClick}
           onPopupAdd={handleAddPlaceClick}
-          cards={cards}
         />
         <Footer />
 
@@ -89,7 +58,6 @@ function App() {
         <PopupView />
 
       </div>
-    </CurrentUserContext.Provider>
   )
 }
 
