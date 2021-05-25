@@ -1,5 +1,6 @@
 import React from 'react'
 import { CurrentUserContext } from '../сontext/CurrentUserContext'
+import Card from './Card'
 
 function Main(props) {
   const currentUser = React.useContext(CurrentUserContext)
@@ -39,6 +40,15 @@ function Main(props) {
 
       <section className="places">
         <ul className="places__section">
+          {props.cards.map((card) => (
+            <Card
+              key={card._id}
+              link={card.link}
+              name={card.name}
+              likes={card.likes.length}
+              card={card}
+            />
+          ))}
         </ul>
       </section>
     </main>
@@ -46,3 +56,8 @@ function Main(props) {
 }
 
 export default Main;
+
+/*
+        <ul className="places__section">
+        </ul>
+*/

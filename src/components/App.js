@@ -10,13 +10,13 @@ import PopupEdit from './PopupEdit'
 import PopupAdd from './PopupAdd'
 import PopupConfirm from './PopupConfirm'
 import PopupView from './PopupView'
-import Card from './Card'
 
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false)
   const [currentUser, setCurrentUser] = React.useState('')
+  const [cards, setCards] = React.useState([])
 
   React.useEffect(() => {
     api.getUserInfo()
@@ -29,9 +29,19 @@ function App() {
         })
       })
       .catch(err => {
-        console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
+        console.log(`Данные пользователья с сервера не получены. Ошибка: ${err}.`)
       })
   }, [])
+
+  React.useEffect(() => {
+    api.getInitialCards()
+      .then(cards => {
+        setCards(cards)
+      })
+      .catch(err => {
+        console.log(`Данные карточек с сервера не получены. Ошибка: ${err}.`)
+      })
+  })
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true)
@@ -59,6 +69,7 @@ function App() {
           onPopupAvatar={handleEditAvatarClick}
           onPopupEdit={handleEditProfileClick}
           onPopupAdd={handleAddPlaceClick}
+          cards={cards}
         />
         <Footer />
 
@@ -77,7 +88,6 @@ function App() {
         <PopupConfirm />
         <PopupView />
 
-        <Card />
       </div>
     </CurrentUserContext.Provider>
   )
