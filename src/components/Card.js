@@ -2,7 +2,6 @@ import React from 'react'
 
 function Card(props) {
   return (
-    <div className="place-template">
       <li className="place-card">
         <img className="place-card__image" src={props.link} alt={props.name} />
         <div className="place-card__wrapper">
@@ -15,7 +14,6 @@ function Card(props) {
         <button className="place-card__delete" type="button" aria-label="Удалить">
         </button>
       </li>
-    </div>
   );
 }
 

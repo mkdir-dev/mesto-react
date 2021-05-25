@@ -56,8 +56,3 @@ function Main(props) {
 }
 
 export default Main;
-
-/*
-        <ul className="places__section">
-        </ul>
-*/
