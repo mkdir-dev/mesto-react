@@ -7,7 +7,7 @@ import PopupAvatar from './PopupAvatar'
 import PopupEdit from './PopupEdit'
 import PopupAdd from './PopupAdd'
 import PopupConfirm from './PopupConfirm'
-import PopupView from './PopupView'
+import ImagePopup from './ImagePopup'
 
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false)
@@ -63,7 +63,7 @@ function App() {
         onClose={closeAllPopups}
       />
       <PopupConfirm />
-      <PopupView
+      <ImagePopup
         card={selectedCard}
         onClose={closeAllPopups}
       />

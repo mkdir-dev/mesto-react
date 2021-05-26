@@ -1,4 +1,4 @@
-function PopupView(props) {
+function ImagePopup(props) {
   return (
     <div className={props.card ? "popup popup_type_view popup_opened" : "popup popup_type_view"}>
       <div className="popup__view">
@@ -12,4 +12,4 @@ function PopupView(props) {
   );
 }
 
-export default PopupView;
+export default ImagePopup;
