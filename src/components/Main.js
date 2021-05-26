@@ -9,24 +9,15 @@ function Main(props) {
   const [cards, setCards] = React.useState([])
 
   React.useEffect(() => {
-    api.getUserInfo()
-      .then(data => {
-        setUserName(data.name)
-        setUserDescription(data.about)
-        setUserAvatar(data.avatar)
-      })
-      .catch(err => {
-        console.log(`Данные пользователя с сервера не получены. Ошибка: ${err}.`)
-      })
-  }, [])
-
-  React.useEffect(() => {
-    api.getInitialCards()
-      .then(cards => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userData, cards]) => {
+        setUserName(userData.name)
+        setUserDescription(userData.about)
+        setUserAvatar(userData.avatar)
         setCards(cards)
       })
       .catch(err => {
-        console.log(`Данные карточек с сервера не получены. Ошибка: ${err}.`)
+        console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
       })
   })
 
