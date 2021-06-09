@@ -48,6 +48,7 @@ function EditProfilePopup(props) {
         type="text" placeholder="Имя"
         minLength="2"
         maxLength="40"
+        value={name}
         required />
       <span className="popup__input-error" id="name-error"></span>
       <input
@@ -59,6 +60,7 @@ function EditProfilePopup(props) {
         placeholder="Деятельность"
         minLength="2"
         maxLength="200"
+        value={description}
         required />
       <span className="popup__input-error" id="about-error"></span>
     </PopupWithForm>
