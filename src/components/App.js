@@ -88,6 +88,17 @@ function App() {
       })
   }
 
+  function handleUpdateAvatar(data) {
+    api.editUserAvatar(data)
+      .then(avatar => {
+        setCurrentUser(avatar)
+        closeAllPopups()
+      })
+      .catch(err => {
+        console.log(`Не удалось изменить аватар пользователя. Ошибка: ${err}.`)
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -106,6 +117,7 @@ function App() {
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
         />
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
