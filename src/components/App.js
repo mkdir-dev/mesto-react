@@ -21,14 +21,14 @@ function App() {
 
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, cards]) => {
+      .then(([userData, cardsData]) => {
         setCurrentUser(userData)
-        setCards(cards)
+        setCards(cardsData)
       })
       .catch(err => {
         console.log(`Данные с сервера не получены. Ошибка: ${err}.`)
       })
-  })
+  }, [])
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true)
