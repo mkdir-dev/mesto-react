@@ -57,7 +57,7 @@ function App() {
     const isLiked = card.likes.some(i => i._id === currentUser._id)
 
     api.changeLikeCardStatus(card._id, isLiked)
-      .then((newCard) => {
+      .then(newCard => {
         const newCards = cards.map((c) => c._id === card._id ? newCard : c)
         setCards(newCards)
       })
@@ -74,6 +74,17 @@ function App() {
       })
       .catch(err => {
         console.log(`Не удалось удалить карточку. Ошибка: ${err}.`)
+      })
+  }
+
+  function handleUpdateUser(data) {
+    api.editUserInfo(data)
+      .then(userData => {
+        setCurrentUser(userData)
+        closeAllPopups()
+      })
+      .catch(err => {
+        console.log(`Не удалось изменить данные пользователя. Ошибка: ${err}.`)
       })
   }
 
@@ -99,6 +110,7 @@ function App() {
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
         />
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
