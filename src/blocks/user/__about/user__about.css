@@ -1,4 +1,4 @@
-.user__vocation {
+.user__about {
   max-width: 400px;
   margin: 0;
   font-size: 18px;
@@ -10,13 +10,13 @@
 }
 
 @media (max-width: 525px) {
-  .user__vocation {
+  .user__about {
     max-width: 350px;
   }
 }
 
 @media (max-width: 425px) {
-  .user__vocation {
+  .user__about {
     max-width: 250px;
     font-size: 14px;
     line-height: normal;

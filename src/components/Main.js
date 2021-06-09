@@ -27,7 +27,7 @@ function Main(props) {
                 onClick={props.onPopupEdit}>
               </button>
             </div>
-            <p className="user__vocation">{currentUser.about}</p>
+            <p className="user__about">{currentUser.about}</p>
           </div>
         </div>
         <button

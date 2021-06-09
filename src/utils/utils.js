@@ -13,7 +13,7 @@ const buttonEdit = document.querySelector('.user__edit');
 const buttonAdd = document.querySelector('.user__add');
 const buttonAvatar = document.querySelector('.user__edit-avatar')
 const nameInput = document.querySelector('.popup__input_type_name');
-const vocationInput = document.querySelector('.popup__input_type_vocation');
+const aboutInput = document.querySelector('.popup__input_type_about');
 
 const popupFormAdd = document.querySelector('.popup__form_type_add')
 const popupFormEdit = document.querySelector('.popup__form_type_edit')
@@ -23,7 +23,7 @@ const popupFormConfirm = document.querySelector('.popup__form_type_confirm')
 const placeTemplate = '.place-template';
 const placeSection = '.places__section';
 const userName = '.user__name';
-const userVocation = '.user__vocation';
+const userabout = '.user__about';
 const userAvatar = '.user__avatar';
 const popupView = '.popup_type_view';
 const popuEdit = '.popup_type_edit';
@@ -37,12 +37,12 @@ export {
   popupFormEdit,
   buttonEdit,
   nameInput,
-  vocationInput,
+  aboutInput,
   buttonAdd,
   placeTemplate,
   placeSection,
   userName,
-  userVocation,
+  userabout,
   userAvatar,
   popupView,
   popuEdit,

@@ -51,16 +51,16 @@ function EditProfilePopup(props) {
         required />
       <span className="popup__input-error" id="name-error"></span>
       <input
-        className="popup__input popup__input_type_vocation"
+        className="popup__input popup__input_type_about"
         onChange={handleChangeDescription}
-        id="vocation"
-        name="vocation"
+        id="about"
+        name="about"
         type="text"
         placeholder="Деятельность"
         minLength="2"
         maxLength="200"
         required />
-      <span className="popup__input-error" id="vocation-error"></span>
+      <span className="popup__input-error" id="about-error"></span>
     </PopupWithForm>
   );
 }

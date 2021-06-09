@@ -25,7 +25,7 @@
 @import url(./blocks/user/__info/user__info.css);
 @import url(./blocks/user/__text/user__text.css);
 @import url(./blocks/user/__name/user__name.css);
-@import url(./blocks/user/__vocation/user__vocation.css);
+@import url(./blocks/user/__about/user__about.css);
 @import url(./blocks/button/button.css);
 @import url(./blocks/user/__edit/user__edit.css);
 @import url(./blocks/user/__add/user__add.css);
