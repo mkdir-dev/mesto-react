@@ -1,6 +1,6 @@
 import PopupWithForm from './PopupWithForm'
 
-function PopupEdit(props) {
+function EditProfilePopup(props) {
   return (
     <PopupWithForm
       title='Редактировать профиль'
@@ -19,4 +19,4 @@ function PopupEdit(props) {
   );
 }
 
-export default PopupEdit;
+export default EditProfilePopup;

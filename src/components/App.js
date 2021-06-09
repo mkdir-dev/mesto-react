@@ -5,9 +5,9 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
-import PopupAvatar from './PopupAvatar'
-import PopupEdit from './PopupEdit'
-import PopupAdd from './PopupAdd'
+import EditAvatarPopup from './EditAvatarPopup'
+import EditProfilePopup from './EditProfilePopup'
+import AddPlacePopup from './AddPlacePopup'
 import PopupConfirm from './PopupConfirm'
 import ImagePopup from './ImagePopup'
 
@@ -92,15 +92,15 @@ function App() {
         />
         <Footer />
 
-        <PopupAvatar
+        <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
         />
-        <PopupEdit
+        <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
         />
-        <PopupAdd
+        <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
         />
