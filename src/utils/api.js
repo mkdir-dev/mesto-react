@@ -91,6 +91,14 @@ class Api {
     })
       .then(res => this._fixPromise(res))
   }
+
+  changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+      return this.deleteLikeCard(id)
+    } else {
+      return this.addLikeCard(id)
+    }
+  }
 }
 
 const api = new Api({

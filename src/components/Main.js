@@ -49,6 +49,7 @@ function Main(props) {
               likes={card.likes.length}
               card={card}
               onCardClick={props.onCardClick}
+              onCardLike={props.onCardLike}
             />
           ))}
         </ul>

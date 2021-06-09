@@ -53,6 +53,19 @@ function App() {
     setSelectedCard(null)
   }
 
+  function handleCardLike(card) {
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
+
+    api.changeLikeCardStatus(card._id, isLiked)
+      .then((newCard) => {
+        const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+        setCards(newCards);
+      })
+      .catch(err => {
+        console.log(`Не удалось обработать отметку "Мне нравится". Ошибка: ${err}.`)
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -62,6 +75,7 @@ function App() {
           onPopupEdit={handleEditProfileClick}
           onPopupAdd={handleAddPlaceClick}
           onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
           cards={cards}
         />
         <Footer />
