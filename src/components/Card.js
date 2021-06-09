@@ -14,8 +14,12 @@ function Card(props) {
     props.onCardClick(props.card);
   }
 
-  function handleCardLike() {
+  function handleLikeClick() {
     props.onCardLike(props.card);
+  }
+
+  function handleDeleteClick() {
+    props.onCardDelete(props.card);
   }
 
   return (
@@ -24,11 +28,11 @@ function Card(props) {
       <div className="place-card__wrapper">
         <h2 className="place-card__name">{props.name}</h2>
         <div className="place-card__like-wrap">
-          <button className={cardLikeButtonClassName} type="button" onClick={handleCardLike} aria-label="Нравится"></button>
+          <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick} aria-label="Нравится"></button>
           <p className="place-card__like-count">{props.likes}</p>
         </div>
       </div>
-      <button className={cardDeleteButtonClassName} type="button" aria-label="Удалить">
+      <button className={cardDeleteButtonClassName} type="button" onClick={handleDeleteClick} aria-label="Удалить">
       </button>
     </li>
   );
