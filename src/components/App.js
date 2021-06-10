@@ -99,6 +99,17 @@ function App() {
       })
   }
 
+  function handleAddPlaceSubmit(data) {
+    api.addCard(data)
+      .then(newCard => {
+        setCards([newCard, ...cards])
+        closeAllPopups()
+      })
+      .catch(err => {
+        console.log(`Не удалось создать новую карточку. Ошибка: ${err}.`)
+      })
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -127,6 +138,7 @@ function App() {
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
+          onAddPlace={handleAddPlaceSubmit}
         />
         <PopupConfirm />
         <ImagePopup
